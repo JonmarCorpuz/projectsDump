@@ -53,3 +53,12 @@ sudo systemctl enable zabbix-server
 # Start the Zabbix server immediately
 sudo systemctl start zabbix-server
 ```
+
+<br>
+
+# Verify Zabbix Server Configuration
+
+Verify Zabbix server is running
+```Bash
+sudo systemctl status zabbix-server
+```
