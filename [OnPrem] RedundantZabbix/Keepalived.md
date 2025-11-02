@@ -32,7 +32,7 @@ vrrp_instance VI_1 {
         auth_pass MyStrongPass     # Specify the shared password for VRRP authentication
     }
     virtual_ipaddress {
-        192.168.0.250              # Configure the Virtual IP address to be managed by VRRP and failover
+        VIRTUAL_IP_ADDRESS         # Configure the Virtual IP address to be managed by VRRP and failover
     }
     track_script {
         chk_haproxy                # Specify to use the defined script to monitor HAProxy service health
