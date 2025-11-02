@@ -16,7 +16,7 @@ sudo apt -y install zabbix-server-mysql zabbix-frontend-php zabbix-apache-conf z
 
 <br>
 
-3. [Install and configure](https://github.com/JonmarCorpuz/projectsDump/blob/main/%5BOnPrem%5D%20RedundantZabbix/Galera%20Cluster.md) the MariabDB databases and Galera cluster
+3. [Install and configure](https://github.com/JonmarCorpuz/projectsDump/blob/main/%5BOnPrem%5D%20RedundantZabbix/Galera%20Cluster.md) the MariabDB databases and Galera cluster for Zabbix's backend
 
 <br>
 
@@ -75,6 +75,77 @@ sudo systemctl start zabbix-server
 ![](https://github.com/JonmarCorpuz/projectsDump/blob/main/%5BOnPrem%5D%20RedundantZabbix/Images/Screenshot_2025-10-30_at_19-37-40_zabbix1_Tableau_de_bord.png)
 
 <br>
+
+# Monitor Hosts Using Zabbix
+
+## Zabbix Agent on Linux
+
+1. Install the latest Zabbix repository package for Ubuntu 24.04 
+```Bash
+sudo wget https://repo.zabbix.com/zabbix/7.4/release/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.4+ubuntu24.04_all.deb
+sudo dpkg -i zabbix-release_latest_7.4+ubuntu24.04_all.deb
+sudo apt -y update
+```
+
+<br>
+
+2. Install the Zabbix agent
+```Bash
+sudo apt -y install zabbix-agent
+```
+
+<br>
+
+3. Configure the Zabbix agent daemon
+```Bash
+sudo nano /etc/zabbix/zabbix_agentd.conf
+```
+```INI
+# Specify the path to store the agent's process ID file
+PidFile=/run/zabbix/zabbix_agentd.pid
+
+# Specify the file to log agent events and activity        
+LogFile=/var/log/zabbix/zabbix_agentd.log
+
+# Specify the maximum log file size in MB (0 means unlimited)
+LogFileSize=0
+
+# Specify the IP address of the Zabbix servers for passive agent checks
+Server=ZABBIX1_SERVER_IP,ZABBIX2_SERVER_IP
+
+# Specify the IP address of the Zabbix servers for active agent checks
+ServerActive=ZABBIX1_SERVER_IP,ZABBIX2_SERVER_IP
+
+# Specify the hostname for this agent (This must match with the hostname configured on the Zabbix server)
+Hostname=HOSTNAME
+
+# Specify to include the additional agent configuration files from this directory
+Include=/etc/zabbix/zabbix_agentd.d/*.conf         
+```
+
+<br>
+
+4. Enable and start the Zabbix agent
+```Bash
+# Enable the Zabbix agent service to start automatically at boot
+sudo systemctl enable zabbix-agent
+
+# Start the Zabbix agent immediately
+sudo systemctl start zabbix-agent
+```
+
+<br>
+
+## SNMP
+
+1. Configure SNMP on Cisco switches and routers
+```INI
+snmp-server community MyCommunity RO
+snmp-server host ZABBIX1_IP_ADDRESS version 2c MyCommunity
+snmp-server host ZABBIX2_IP_ADDRESS version 2c MyCommunity
+snmp-server location LOCATION
+snmp-server contact CONTACT_EMAIL
+```
 
 # Verify Zabbix Server Configuration
 
