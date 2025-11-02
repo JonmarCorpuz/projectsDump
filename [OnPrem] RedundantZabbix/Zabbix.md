@@ -136,6 +136,35 @@ sudo systemctl start zabbix-agent
 
 <br>
 
+5. Add the host via the Zabbix web UI
+
+<br>
+
+6. Go to **Hosts**
+![](https://github.com/JonmarCorpuz/projectsDump/blob/main/%5BOnPrem%5D%20RedundantZabbix/Images/zabbix_add_hosts1.png)
+
+<br>
+
+7. Select **Create Host**
+![](https://github.com/JonmarCorpuz/projectsDump/blob/main/%5BOnPrem%5D%20RedundantZabbix/Images/zabbix_add_hosts2.png)
+
+<br>
+
+8. Select **Agent** as the interface
+![](https://github.com/JonmarCorpuz/projectsDump/blob/main/%5BOnPrem%5D%20RedundantZabbix/Images/zabbix_add_hosts3.png)
+
+<br>
+
+9. Fill out the **Host name** field with the hostname specified in the Zabbix agent configuration file on the target host
+![](https://github.com/JonmarCorpuz/projectsDump/blob/main/%5BOnPrem%5D%20RedundantZabbix/Images/zabbix_add_hosts4.png)
+
+<br>
+
+7. Add the host
+![](https://github.com/JonmarCorpuz/projectsDump/blob/main/%5BOnPrem%5D%20RedundantZabbix/Images/zabbix_add_hosts6.png)
+
+<br>
+
 ## Zabbix Agent on Windows
 
 <br>
@@ -162,6 +191,35 @@ sudo systemctl start zabbix-agent
 
 <br>
 
+3. Add the host via the Zabbix web UI
+
+<br>
+
+4. Go to **Hosts**
+![](https://github.com/JonmarCorpuz/projectsDump/blob/main/%5BOnPrem%5D%20RedundantZabbix/Images/zabbix_add_hosts1.png)
+
+<br>
+
+5. Select **Create Host**
+![](https://github.com/JonmarCorpuz/projectsDump/blob/main/%5BOnPrem%5D%20RedundantZabbix/Images/zabbix_add_hosts2.png)
+
+<br>
+
+6. Select **Agent** as the interface
+![](https://github.com/JonmarCorpuz/projectsDump/blob/main/%5BOnPrem%5D%20RedundantZabbix/Images/zabbix_add_hosts3.png)
+
+<br>
+
+7. Fill out the **Host name** field with the hostname specified in the Zabbix agent configuration file on the target host
+![](https://github.com/JonmarCorpuz/projectsDump/blob/main/%5BOnPrem%5D%20RedundantZabbix/Images/zabbix_add_hosts4.png)
+
+<br>
+
+8. Add the host
+![](https://github.com/JonmarCorpuz/projectsDump/blob/main/%5BOnPrem%5D%20RedundantZabbix/Images/zabbix_add_hosts6.png)
+
+<br>
+
 ## SNMP
 
 1. Configure SNMP on Cisco switches and routers
@@ -172,6 +230,35 @@ snmp-server host ZABBIX2_IP_ADDRESS version 2c MyCommunity
 snmp-server location LOCATION
 snmp-server contact CONTACT_EMAIL
 ```
+
+<br>
+
+2. Add the host via the Zabbix web UI
+
+<br>
+
+3. Go to **Hosts**
+![](https://github.com/JonmarCorpuz/projectsDump/blob/main/%5BOnPrem%5D%20RedundantZabbix/Images/zabbix_add_hosts1.png)
+
+<br>
+
+4. Select **Create Host**
+![](https://github.com/JonmarCorpuz/projectsDump/blob/main/%5BOnPrem%5D%20RedundantZabbix/Images/zabbix_add_hosts2.png)
+
+<br>
+
+5. Select **SNMP** as the interface
+![](https://github.com/JonmarCorpuz/projectsDump/blob/main/%5BOnPrem%5D%20RedundantZabbix/Images/zabbix_add_hosts3.png)
+
+<br>
+
+6. Fill out the **Host name** field with the hostname specified in the SNMP configuration and select the **Network Generic Device by SNMP** template
+![](https://github.com/JonmarCorpuz/projectsDump/blob/main/%5BOnPrem%5D%20RedundantZabbix/Images/zabbix_add_hosts5.png)
+
+<br>
+
+7. Add the host
+![](https://github.com/JonmarCorpuz/projectsDump/blob/main/%5BOnPrem%5D%20RedundantZabbix/Images/zabbix_add_hosts6.png)
 
 <br>
 
@@ -187,3 +274,5 @@ sudo systemctl status zabbix-server
 # Documentation
 
 * [Download and Install Zabbix Server](https://www.zabbix.com/download?zabbix=5.2&os_distribution=ubuntu)
+* [Download and Install Zabbix Agent on Windows](https://www.zabbix.com/download_agents)
+* [Download and Install Zabbix Agent on Linux](https://www.zabbix.com/documentation/3.0/en/manual/installation/install_from_packages/agent_installation)
