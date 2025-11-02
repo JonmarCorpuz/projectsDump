@@ -5,6 +5,8 @@
 sudo apt -y install mariadb-server mariadb-client galera-4 rsync
 ```
 
+<br>
+
 2. Open the necessary ports
 ```Bash
 # Allow incoming MariaDB TCP connections
@@ -19,6 +21,8 @@ sudo ufw allow 4567/udp
 # Reload UFW to apply the new firewall rules
 sudo ufw reload
 ```
+
+<br>
 
 3. Create the Zabbix database and user
 ```Bash
@@ -42,6 +46,8 @@ SET GLOBAL log_bin_trust_function_creators = 1;
 QUIT;
 ```
 
+<br>
+
 4. Fetch the main schema initialization script for Zabbix's MariaDB database backend
 ```Bash
 # Download the latest Zabbix repository package for Ubuntu 24.04
@@ -54,10 +60,14 @@ sudo dpkg -i zabbix-release_latest_7.4+ubuntu24.04_all.deb
 sudo apt -y update
 ```
 
+<br>
+
 5. Extract the initial schema and data for Zabbix's database backend directly into the MariaDB client
 ```Bash
 sudo zcat /usr/share/zabbix/sql-scripts/mysql/server.sql.gz | mysql --default-character-set=utf8mb4 -uzabbix -p zabbix
 ```
+
+<br>
 
 6. Disable the log_bin_trust_function_creators option after importing the database schema
 ```Bash
@@ -69,10 +79,14 @@ SET GLOBAL log_bin_trust_function_creators = 0;
 QUIT;
 ```
 
+<br>
+
 7. Stop MariaDB on all database nodes
 ```Bash
 sudo systemctl stop mariadb
 ```
+
+<br>
 
 8. Define the Galera cluster-specific settings on each database node before bootstrapping the MariaDB Galera cluster
 ```Bash
@@ -117,10 +131,14 @@ wsrep_sst_method=rsync
 log_bin_trust_function_creators=ON
 ```
 
+<br>
+
 9. Select a primary database node and bootstrap the MariaDB Galera Cluster after ensuring that MariaDB has stopped running on all the database nodes
 ```Bash
 sudo galera_new_cluster
 ```
+
+<br>
 
 10. Start MariaDB on the other database nodes
 ```Bash
@@ -136,6 +154,8 @@ Show the number of nodes that are currently connected to the cluster
 sudo mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_cluster_size';"
 ```
 
+<br>
+
 Show the node's current state 
 ```SQL
 sudo mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_local_state_comment';"
@@ -146,6 +166,8 @@ sudo mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_local_state_comment';"
 | **Joining** | The node is in the process of joining the cluster and is synchronizing its data with the other nodes |
 | **Donor** | The node is in read-only mode while providing a State Snapshot Transfer to another node |
 
+<br>
+
 Show if the node is able to communicate with the other nodes within the cluster
 ```SQL
 sudo mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_connected';"
@@ -154,6 +176,8 @@ sudo mysql -u root -p -e "SHOW STATUS LIKE 'wsrep_connected';"
 | --- | --- |
 | **ON** | The node has network connectivity with other components in the Galera cluster and can communicate |
 | **OFF** | The node cannot connect to any other cluster components and is either isolated or misconfigured |
+
+<br>
 
 Show the cluster UUID
 ```SQL
