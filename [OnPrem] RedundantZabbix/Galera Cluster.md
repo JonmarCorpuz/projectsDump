@@ -78,7 +78,7 @@ sudo systemctl stop mariadb
 ```Bash
 sudo nano /etc/mysql/mariadb.conf.d/60-galera.cnf
 ```
-```Text
+```INI
 [mysqld]
 # Set binary log format required for Galera
 binlog_format=ROW
