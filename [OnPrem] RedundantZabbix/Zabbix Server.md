@@ -34,16 +34,11 @@ DBPassword=db_password        # The passsword of the database user
 ############ ADVANCED PARAMETERS ################
 SNMPTrapperFile=/var/log/snmptrap/snmptrap.log        # The path to the log file for captured SNMP traps
 StartSNMPTrapper=1                                    # Enable the SNMP trapper process
-
 Timeout=4                                             # Set the maximum time Zabbix will wait for agent responses and other operations
-
 FpingLocation=/usr/bin/fping                          # The path to the 'fping' binary used for ICMP checks
-
 LogSlowQueries=3000                                   # The log queries that take longer than 3 seconds to execute
- 
 StatsAllowedIP=127.0.0.1                              # Instruct to only allow statistics access from the localhost
 
 ########### ADDITIONAL PARAMETERS ###############
 Include=/etc/zabbix/zabbix_server.d/*.conf           # Include additional configuration files from this directory
-
 ```
