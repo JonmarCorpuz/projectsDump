@@ -264,9 +264,20 @@ snmp-server contact CONTACT_EMAIL
 
 # Verify Zabbix Server Configuration
 
-Verify Zabbix server is running
+## Zabbix Server
+
+Verify that the Zabbix server is running
 ```Bash
 sudo systemctl status zabbix-server
+```
+
+<br>
+
+## Zabbix Agent
+
+Verify that the Zabbix agent is running
+```Bash
+sudo systemctl status zabbix-agent
 ```
 
 <br>
