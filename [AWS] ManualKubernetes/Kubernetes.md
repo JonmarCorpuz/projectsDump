@@ -1,4 +1,4 @@
-# Partie 1: Mise en place de service de déploiement (manuel ou automatique) de l’application WordPress sur un cluster Kubernetes
+# Kubernetes Startup Script
 
 ## Installer un cluster Kubernetes avec un master et deux workers nodes
 
