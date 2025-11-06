@@ -15,4 +15,10 @@ terraform --version
 
 <br>
 
-# Deploy Infrastructure 
+# Define and Deploy the Infrastructure 
+
+## Terraform Providers
+
+```Terraform
+
+```
